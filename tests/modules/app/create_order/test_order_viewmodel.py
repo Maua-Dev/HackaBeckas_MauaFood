@@ -1,5 +1,5 @@
 import pytest
-from src.modules.create_order.create_order_viewmodel import CreateOrderViewModel
+from src.modules.app.create_order.create_order_viewmodel import CreateOrderViewModel
 from src.shared.infra.repositories.pizzaria_repository_mock import PizzariaRepositoryMock
 
 class Test_CreateOrderViewModel:
@@ -8,4 +8,4 @@ class Test_CreateOrderViewModel:
 
         orderViewModel = CreateOrderViewModel(order=repo.orders[0]).to_dict()
 
-        assert orderViewModel == {'pizza': {'flavor': 'BACON','price': 'BACON'}, 'table': 1, 'message': 'the order has been created'}
+        assert orderViewModel == {'pizza': {'flavor': 'BACON'}, 'table': 1, 'message': 'the order has been created'}

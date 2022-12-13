@@ -1,7 +1,7 @@
 from src.shared.domain.entities.order import Order
 from src.shared.domain.entities.pizza import Pizza
 from src.shared.domain.enums.flavor_enum import FLAVOR
-from src.shared.domain.enums.price_enum import PRICE
+# from src.shared.domain.enums.price_enum import PRICE
 
 
 class PizzaViewModel:
@@ -12,8 +12,7 @@ class PizzaViewModel:
 
     def to_dict(self) -> dict:
         return {
-            "flavor": self.pizza.flavor.value,
-            "price": self.pizza.flavor.value
+            "flavor": self.pizza.flavor.value[0]
         }
 
 class CreateOrderViewModel:
@@ -28,4 +27,3 @@ class CreateOrderViewModel:
             "pizza": PizzaViewModel(self.order.pizza).to_dict(),
             "message": "the order has been created"
         }
-

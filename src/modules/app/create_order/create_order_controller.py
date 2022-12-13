@@ -4,7 +4,7 @@ from src.shared.helpers.http.http_models import BadRequest, Created, HttpRequest
 from src.shared.helpers.errors.domain_errors import EntityError
 from src.shared.helpers.errors.controller_errors import MissingParameters
 from src.shared.domain.enums.flavor_enum import FLAVOR
-from src.shared.domain.enums.price_enum import PRICE
+# from src.shared.domain.enums.price_enum import PRICE
 
 
 
@@ -20,9 +20,6 @@ class CreateOrderController:
             if request.body.get('flavor') is None:
                 raise MissingParameters('flavor')
 
-            if request.body.get('price') is None:
-                raise MissingParameters('price')
-
             if not request.body["table"].isdecimal():
                 raise EntityError("table")
             
@@ -31,19 +28,19 @@ class CreateOrderController:
             
             flavors = list()
             for item in FLAVOR:
-                flavors.append(item.value)
+                flavors.append(item.value[0])
 
-            prices = list()
-            for item in PRICE:
-                prices.append(item.value)
+            # prices = list()
+            # for item in FLAVOR.value[1]:
+            #     prices.append(item.value())
 
             if request.body["flavor"] not in flavors:
                 raise EntityError("flavor")
             
-            if request.body["price"] not in prices:
-                raise EntityError("price")
+            # if request.body["price"] not in prices:
+            #     raise EntityError("price")
 
-            order = self.createOrderUsecase(table=int(request.body["table"]),flavor=FLAVOR[request.body["flavor"]],price=PRICE[request.body["price"]])
+            order = self.createOrderUsecase(table=int(request.body["table"]),flavor=FLAVOR[request.body["flavor"]])
             viewmodel = CreateOrderViewModel(order=order)
 
             return Created(viewmodel.to_dict())

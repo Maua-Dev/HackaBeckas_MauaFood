@@ -1,6 +1,6 @@
 import pytest
 import json
-from src.modules.create_order.create_order_presenter import lambda_handler
+from src.modules.app.create_order.create_order_presenter import lambda_handler
 
 class Test_CreateOrderPresenter:
     def test_create_order_presenter(self):
@@ -47,7 +47,7 @@ class Test_CreateOrderPresenter:
                 "time": "12/Mar/2020:19:03:58 +0000",
                 "timeEpoch": 1583348638390
             },
-            "body": '{"table":"1", "flavor":"BACON", "price:"BACON"}',
+            "body": '{"table":"1", "flavor":"BACON"}',
             "pathParameters": None,
             "isBase64Encoded": None,
             "stageVariables": None
@@ -56,8 +56,7 @@ class Test_CreateOrderPresenter:
         expected = {
             "table": 1,
             "pizza":{
-                "flavor": "BACON",
-                "price":"BACON"
+                "flavor": "BACON"
             },
             
             "message": "the order has been created"
