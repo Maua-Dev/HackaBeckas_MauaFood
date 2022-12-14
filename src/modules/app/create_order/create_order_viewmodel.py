@@ -12,7 +12,8 @@ class PizzaViewModel:
 
     def to_dict(self) -> dict:
         return {
-            "flavor": self.pizza.flavor.value[0]
+            "flavor": self.pizza.flavor.value[0],
+            "stuffed_edge": self.pizza.stuffed_edge.value
         }
 
 class CreateOrderViewModel:

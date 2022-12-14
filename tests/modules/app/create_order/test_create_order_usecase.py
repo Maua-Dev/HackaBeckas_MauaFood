@@ -1,4 +1,5 @@
 import pytest
+from src.shared.domain.enums.stuffed_edge_enum import STUFFED_EDGE
 from src.shared.domain.repositories.pizzaria_repository_interface import IPizzariaRepository
 from src.shared.domain.enums.flavor_enum import FLAVOR
 # from src.shared.domain.enums.price_enum import PRICE
@@ -13,10 +14,14 @@ class Test_CreateOrderUsecase:
         
         lenBefore = len(repo.orders)
         
-        order = usecase(table=4, flavor=FLAVOR.BACON)
+        order = usecase(table=6, flavor=FLAVOR.BACON, stuffed_edge=STUFFED_EDGE.CLASSIC)
         
         assert len(repo.orders) == lenBefore + 1
-        assert order.table == 4
+        assert order.table == 6
         assert order.pizza.flavor == FLAVOR.BACON
+        assert order.pizza.stuffed_edge == STUFFED_EDGE.CLASSIC
         assert order.pizza.price == FLAVOR.BACON.value[1]
+
+    def __repr__(self):
+        return f'repo={PizzariaRepositoryMock}'
 

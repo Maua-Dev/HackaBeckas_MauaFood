@@ -1,3 +1,4 @@
+from src.shared.domain.enums.stuffed_edge_enum import STUFFED_EDGE
 from .create_order_usecase import CreateOrderUsecase
 from .create_order_viewmodel import CreateOrderViewModel
 from src.shared.helpers.http.http_models import BadRequest, Created, HttpRequest, HttpResponse, InternalServerError
@@ -17,11 +18,14 @@ class CreateOrderController:
             if request.body.get("table") is None:
                 raise MissingParameters('table')
             
-            if request.body.get('flavor') is None:
+            if request.body.get("flavor") is None:
                 raise MissingParameters('flavor')
 
+            if request.body.get("stuffed_edge") is None:
+                raise MissingParameters('stuffed_edge')
+
             if not request.body["table"].isdecimal():
-                raise EntityError("table")
+                raise EntityError('table')
             
             # if not request.body["price"].isdecimal():
             #     raise EntityError("price")
@@ -30,17 +34,24 @@ class CreateOrderController:
             for item in FLAVOR:
                 flavors.append(item.value[0])
 
+            edges = list()
+            for item in STUFFED_EDGE:
+                edges.append(item.value)
+
             # prices = list()
             # for item in FLAVOR.value[1]:
             #     prices.append(item.value())
 
             if request.body["flavor"] not in flavors:
                 raise EntityError("flavor")
+
+            if request.body["stuffed_edge"] not in edges:
+                raise EntityError("stuffed_edge")
             
             # if request.body["price"] not in prices:
             #     raise EntityError("price")
 
-            order = self.createOrderUsecase(table=int(request.body["table"]),flavor=FLAVOR[request.body["flavor"]])
+            order = self.createOrderUsecase(table=int(request.body["table"]),flavor=FLAVOR[request.body["flavor"]],stuffed_edge=STUFFED_EDGE[request.body["stuffed_edge"]])
             viewmodel = CreateOrderViewModel(order=order)
 
             return Created(viewmodel.to_dict())
