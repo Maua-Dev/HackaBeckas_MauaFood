@@ -6,6 +6,6 @@ class Test_CreateOrderViewModel:
     def test_create_order_viewmodel(self):
         repo = PizzariaRepositoryMock()
 
-        orderViewModel = CreateOrderViewModel(order=repo.orders[4]).to_dict()
+        createOrderViewModel = CreateOrderViewModel(order=repo.orders[4]).to_dict()
 
-        assert orderViewModel == {'pizza': {'flavor': 'OLIVES', 'stuffed_edge': 'CHEDDAR'}, 'table': 5, 'message': 'the order has been created'}
+        assert createOrderViewModel == {'id': 5, 'pizza': {'flavor': 'OLIVES', 'stuffed_edge': 'CHEDDAR'}, 'table': 5, 'message': 'the order has been created'}

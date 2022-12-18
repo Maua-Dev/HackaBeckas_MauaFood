@@ -13,17 +13,18 @@ class PizzaViewModel:
     def to_dict(self) -> dict:
         return {
             "flavor": self.pizza.flavor.value[0],
-            "stuffed_edge": self.pizza.stuffed_edge.value
+            "stuffed_edge": self.pizza.stuffed_edge.value[0]
         }
 
 class CreateOrderViewModel:
-    order:Order
+    order: Order
 
     def __init__(self, order:Order):
         self.order = order
 
     def to_dict(self) -> dict:
         return{
+            "id": self.order.id,
             "table": self.order.table,
             "pizza": PizzaViewModel(self.order.pizza).to_dict(),
             "message": "the order has been created"

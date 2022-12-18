@@ -11,6 +11,7 @@ class Test_CreateOrderController():
         controller = CreateOrderController(usecase=usecase)
         request = HttpRequest(
             body = {
+                "id": "6",
                 "table": "6",
                 "flavor": "BACON",
                 "stuffed_edge": "CLASSIC"
@@ -20,6 +21,7 @@ class Test_CreateOrderController():
         response = controller(request=request)
 
         assert response.status_code == 201
+        assert response.body["id"] == 6
         assert response.body["pizza"]["flavor"] == "BACON"
         assert response.body["pizza"]["stuffed_edge"] == "CLASSIC"
         assert response.body["table"] == 6

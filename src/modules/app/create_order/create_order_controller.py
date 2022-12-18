@@ -26,6 +26,12 @@ class CreateOrderController:
 
             if not request.body["table"].isdecimal():
                 raise EntityError('table')
+
+            if request.body["id"] is None:
+                raise EntityError('id')
+            
+            if not request.body["id"].isdecimal():
+                raise EntityError('id')
             
             # if not request.body["price"].isdecimal():
             #     raise EntityError("price")
@@ -36,7 +42,7 @@ class CreateOrderController:
 
             edges = list()
             for item in STUFFED_EDGE:
-                edges.append(item.value)
+                edges.append(item.value[0])
 
             # prices = list()
             # for item in FLAVOR.value[1]:
@@ -51,9 +57,8 @@ class CreateOrderController:
             # if request.body["price"] not in prices:
             #     raise EntityError("price")
 
-            order = self.createOrderUsecase(table=int(request.body["table"]),flavor=FLAVOR[request.body["flavor"]],stuffed_edge=STUFFED_EDGE[request.body["stuffed_edge"]])
+            order = self.createOrderUsecase(id=int(request.body["id"]), table=int(request.body["table"]),flavor=FLAVOR[request.body["flavor"]],stuffed_edge=STUFFED_EDGE[request.body["stuffed_edge"]])
             viewmodel = CreateOrderViewModel(order=order)
-
             return Created(viewmodel.to_dict())
             
         except EntityError as err:

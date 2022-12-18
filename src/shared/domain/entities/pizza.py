@@ -18,7 +18,7 @@ class Pizza(abc.ABC):
             
         self.flavor = flavor
         self.stuffed_edge = stuffed_edge
-        self.price = flavor.value[1]
+        self.price = flavor.value[1] + stuffed_edge.value[1]
 
     def __repr__(self):
-        return f'Pizza(flavor={self.flavor.value[0]}, stuffed_edge={self.stuffed_edge.value} price={self.price})'
+        return f'Pizza(flavor={self.flavor.value[0]}, stuffed_edge={self.stuffed_edge.value[0]}, price={self.price})'

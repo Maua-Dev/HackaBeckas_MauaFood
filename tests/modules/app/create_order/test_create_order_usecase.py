@@ -14,9 +14,10 @@ class Test_CreateOrderUsecase:
         
         lenBefore = len(repo.orders)
         
-        order = usecase(table=6, flavor=FLAVOR.BACON, stuffed_edge=STUFFED_EDGE.CLASSIC)
+        order = usecase(id=6, table=6, flavor=FLAVOR.BACON, stuffed_edge=STUFFED_EDGE.CLASSIC)
         
         assert len(repo.orders) == lenBefore + 1
+        assert order.id == 6
         assert order.table == 6
         assert order.pizza.flavor == FLAVOR.BACON
         assert order.pizza.stuffed_edge == STUFFED_EDGE.CLASSIC

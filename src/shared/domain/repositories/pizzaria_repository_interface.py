@@ -8,5 +8,9 @@ from src.shared.domain.enums.stuffed_edge_enum import STUFFED_EDGE
 class IPizzariaRepository(ABC):
 
     @abstractmethod
-    def create_order(self, table: int, flavor: FLAVOR, stuffed_edge: STUFFED_EDGE) -> Order:
+    def create_order(self, id: int, table: int, flavor: FLAVOR, stuffed_edge: STUFFED_EDGE) -> Order:
+        pass
+    
+    @abstractmethod
+    def delete_order(self, id: int, table: int, flavor: FLAVOR, stuffed_edge: STUFFED_EDGE) -> Order:
         pass

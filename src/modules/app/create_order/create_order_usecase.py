@@ -8,5 +8,5 @@ class CreateOrderUsecase:
     def __init__(self, repo: IPizzariaRepository):
         self.repo = repo
     
-    def __call__(self, table:int, flavor: FLAVOR, stuffed_edge: STUFFED_EDGE) -> Order:
-        return self.repo.create_order(table=table, flavor=flavor, stuffed_edge=stuffed_edge)
+    def __call__(self, id:int, table:int, flavor: FLAVOR, stuffed_edge: STUFFED_EDGE) -> Order:
+        return self.repo.create_order(id=id, table=table, flavor=flavor, stuffed_edge=stuffed_edge)
