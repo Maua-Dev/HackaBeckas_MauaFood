@@ -49,3 +49,25 @@ class PizzariaRepositoryMock(IPizzariaRepository):
                 order = self.orders.pop(ids)
                 return order
         raise NoItemsFound("id")
+
+    def update_order(self, id: int, new_flavor: FLAVOR=None, new_stuffed_edge: STUFFED_EDGE=None) -> Order:
+        idsOrder = -1
+
+        for ids, possible_order in enumerate(self.orders):
+            if (possible_order.id == id):
+                order = possible_order
+                idsOrder = ids
+                break
+
+        if idsOrder == -1:
+            raise NoItemsFound("id")
+
+        if new_flavor != None:
+            order.pizza.flavor = new_flavor
+
+        if new_stuffed_edge != None:
+            order.pizza.stuffed_edge = new_stuffed_edge
+
+        self.orders[idsOrder] = order
+
+        return self.orders[idsOrder]
