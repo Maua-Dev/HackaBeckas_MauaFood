@@ -1,12 +1,12 @@
+from src.modules.app.get_order.get_order_controller import GetOrderController
+from src.modules.app.get_order.get_order_usecase import GetOrderUsecase
 from src.shared.helpers.http.http_lambda_requests import LambdaHttpResponse, LambdaHttpRequest
-from .create_order_controller import CreateOrderController
-from .create_order_usecase import CreateOrderUsecase
 from src.shared.infra.repositories.pizzaria_repository_mock import PizzariaRepositoryMock
 
 def lambda_handler(event, context):
     repo = PizzariaRepositoryMock()
-    usecase = CreateOrderUsecase(repo)
-    controller = CreateOrderController(usecase)
+    usecase = GetOrderUsecase(repo)
+    controller = GetOrderController(usecase)
 
     httpRequest = LambdaHttpRequest(data=event)
     response = controller(httpRequest)

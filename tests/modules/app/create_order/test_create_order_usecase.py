@@ -21,7 +21,7 @@ class Test_CreateOrderUsecase:
         assert order.table == 6
         assert order.pizza.flavor == FLAVOR.BACON
         assert order.pizza.stuffed_edge == STUFFED_EDGE.CLASSIC
-        assert order.pizza.price == FLAVOR.BACON.value[1]
+        assert order.pizza.price == FLAVOR.BACON.value[1] + STUFFED_EDGE.CLASSIC.value[1]
 
     def __repr__(self):
         return f'repo={PizzariaRepositoryMock}'

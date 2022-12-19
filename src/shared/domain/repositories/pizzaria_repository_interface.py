@@ -18,3 +18,7 @@ class IPizzariaRepository(ABC):
     @abstractmethod
     def update_order(self, id: int, new_flavor: FLAVOR, new_stuffed_edge: STUFFED_EDGE) -> Order:
         pass
+
+    @abstractmethod
+    def get_order(self, id: int) -> Order:
+        pass
