@@ -22,4 +22,5 @@ class Test_DeleteOrderController:
         assert response.body["pizza"]["flavor"] == "BACON"
         assert response.body["pizza"]["stuffed_edge"] == "CHEDDAR"
         assert response.body["table"] == 1
+        assert response.body["state"] == "DONE"
         assert response.body["message"] == "the order has been deleted"

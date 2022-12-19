@@ -14,7 +14,8 @@ class Test_CreateOrderController():
                 "id": "6",
                 "table": "6",
                 "flavor": "BACON",
-                "stuffed_edge": "CLASSIC"
+                "stuffed_edge": "CLASSIC",
+                "state": "WAITING_PAYMENT"
             }
         )
 
@@ -25,4 +26,5 @@ class Test_CreateOrderController():
         assert response.body["pizza"]["flavor"] == "BACON"
         assert response.body["pizza"]["stuffed_edge"] == "CLASSIC"
         assert response.body["table"] == 6
+        assert response.body["state"] == "WAITING_PAYMENT"
         assert response.body["message"] == "the order has been created"

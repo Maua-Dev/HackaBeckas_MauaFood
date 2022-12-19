@@ -12,5 +12,6 @@ class UpdateOrderViewmodel:
         return{
             "id": self.order.id,
             "pizza": PizzaViewModel(self.order.pizza).to_dict(),
+            "state": self.order.state.value,
             "message": "The order has been updated!"
         }

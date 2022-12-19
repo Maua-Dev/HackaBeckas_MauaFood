@@ -12,5 +12,6 @@ class GetOrderViewmodel:
             "id": self.order.id,
             "table": self.order.table,
             "pizza": PizzaViewModel(self.order.pizza).to_dict(),
+            "state": self.order.state.value,
             "price": self.order.pizza.price
         }

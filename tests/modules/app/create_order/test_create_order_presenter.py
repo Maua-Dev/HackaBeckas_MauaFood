@@ -47,7 +47,7 @@ class Test_CreateOrderPresenter:
                 "time": "12/Mar/2020:19:03:58 +0000",
                 "timeEpoch": 1583348638390
             },
-            "body": '{"id":"6", "table":"6", "flavor":"BACON", "stuffed_edge": "CLASSIC"}',
+            "body": '{"id":"6", "table":"6", "flavor":"BACON", "stuffed_edge": "CLASSIC", "state":"WAITING_PAYMENT"}',
             "pathParameters": None,
             "isBase64Encoded": None,
             "stageVariables": None
@@ -60,7 +60,7 @@ class Test_CreateOrderPresenter:
                 "flavor": "BACON",
                 "stuffed_edge": "CLASSIC"
             },
-            
+            "state": "WAITING_PAYMENT",
             "message": "the order has been created"
         }
         
@@ -172,7 +172,7 @@ class Test_CreateOrderPresenter:
                 "time": "12/Mar/2020:19:03:58 +0000",
                 "timeEpoch": 1583348638390
             },
-            "body": '{"id": "string", "table":"string", "flavor":"BACON", "stuffed_edge":"CLASSIC"}',
+            "body": '{"id": "6", "table":"string", "flavor":"BACON", "stuffed_edge":"CLASSIC"}',
             "pathParameters": None,
             "isBase64Encoded": None,
             "stageVariables": None

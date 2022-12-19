@@ -11,4 +11,4 @@ class Test_GetOrderUsecase:
 
         order = usecase(id=1)
 
-        assert [order.id, order.pizza, order.table, order.pizza.price] == [getOrder.id, getOrder.pizza, getOrder.table, getOrder.pizza.price]
+        assert [order.id, order.pizza, order.table, order.pizza.price, order.state] == [getOrder.id, getOrder.pizza, getOrder.table, getOrder.pizza.price, getOrder.state]

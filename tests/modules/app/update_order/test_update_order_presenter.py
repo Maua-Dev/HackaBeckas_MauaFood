@@ -48,7 +48,7 @@ class Test_UpdateOrderPresenter:
                 "time": "12/Mar/2020:19:03:58 +0000",
                 "timeEpoch": 1583348638390
             },
-             "body": '{"id": "1","new_flavor": "BEEF","new_stuffed_edge": "RICOTTA","parameter2": "value" }',          "pathParameters": None,
+             "body": '{"id": "1","new_flavor": "BEEF","new_stuffed_edge": "RICOTTA", "new_state": "DELIVERING", "parameter2": "value" }',          "pathParameters": None,
             "isBase64Encoded": None,
             "stageVariables": None
         }
@@ -56,6 +56,7 @@ class Test_UpdateOrderPresenter:
         expected = {
             "id": 1,
             'pizza': {'flavor': 'BEEF', 'stuffed_edge': 'RICOTTA'},
+            "state": "DELIVERING",
             "message": "The order has been updated!"
         }
 
@@ -107,7 +108,7 @@ class Test_UpdateOrderPresenter:
                 "time": "12/Mar/2020:19:03:58 +0000",
                 "timeEpoch": 1583348638390
             },
-            "body": '{"id": "666","new_flavor": "BEEF","new_stuffed_edge": "RICOTTA","parameter2": "value" }',          "pathParameters": None,
+            "body": '{"id": "666","new_flavor": "BEEF","new_stuffed_edge": "RICOTTA","new_state": "DELIVERING","parameter2": "value" }',          "pathParameters": None,
 
             "pathParameters": None,
             "isBase64Encoded": None,
@@ -162,7 +163,7 @@ class Test_UpdateOrderPresenter:
                 "time": "12/Mar/2020:19:03:58 +0000",
                 "timeEpoch": 1583348638390
             },
-            "body": '{"id": "6.0","new_flavor": "BEEF","new_stuffed_edge": "RICOTTA","parameter2": "value" }',          "pathParameters": None,
+            "body": '{"id": "6.0","new_flavor": "BEEF","new_stuffed_edge": "RICOTTA","new_state": "DELIVERING","parameter2": "value" }',          "pathParameters": None,
             "pathParameters": None,
             "isBase64Encoded": None,
             "stageVariables": None
