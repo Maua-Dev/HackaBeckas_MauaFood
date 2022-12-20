@@ -21,11 +21,12 @@ class Test_CreateOrderUsecase:
         # deletedOrder = Order(
         #         id = 1,
         #         pizza = Pizza(flavor=FLAVOR.BACON, stuffed_edge=STUFFED_EDGE.CHEDDAR),
-        #         table = 1
+        #         table = 1,
+        #         state = STATE.DONE
         #     )
         
         assert len(repo.orders) == lenBefore - 1
-        assert [order.id, order.pizza, order.table] == [deletedOrder.id, deletedOrder.pizza, deletedOrder.table]
+        assert [order.id, order.pizza, order.table, order.state] == [deletedOrder.id, deletedOrder.pizza, deletedOrder.table, deletedOrder.state]
 
     def __repr__(self):
         return f'repo={PizzariaRepositoryMock}'

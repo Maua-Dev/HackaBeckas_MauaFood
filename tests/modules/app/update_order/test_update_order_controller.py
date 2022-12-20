@@ -14,7 +14,8 @@ class Test_UpdateOrderController:
             body = {
                 "id": "1",
                 "new_flavor": "BEEF",
-                "new_stuffed_edge": "RICOTTA"
+                "new_stuffed_edge": "RICOTTA",
+                "new_state": "DELIVERING"
             }
         )
 
@@ -24,4 +25,5 @@ class Test_UpdateOrderController:
         assert response.body["id"] == 1
         assert response.body["pizza"]["flavor"] == "BEEF"
         assert response.body["pizza"]["stuffed_edge"] == "RICOTTA"
+        assert response.body["state"] == "DELIVERING"
         assert response.body["message"] == "The order has been updated!"

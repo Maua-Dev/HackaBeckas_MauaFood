@@ -13,5 +13,6 @@ class DeleteOrderViewModel:
             "id": self.order.id,
             "table": self.order.table,
             "pizza": PizzaViewModel(self.order.pizza).to_dict(),
+            "state": self.order.state.value,
             "message": "the order has been deleted"
         }

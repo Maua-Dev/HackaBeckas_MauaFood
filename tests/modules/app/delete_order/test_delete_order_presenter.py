@@ -64,7 +64,7 @@ class Test_DeleteStudentPresenter:
                 "flavor": "BACON",
                 "stuffed_edge": "CHEDDAR"
             },
-            
+            "state": "DONE",
             "message": "the order has been deleted"
         }
 

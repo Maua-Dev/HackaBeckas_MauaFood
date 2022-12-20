@@ -21,4 +21,5 @@ class Test_GetOrderController:
         assert response.body['table'] == repo.orders[0].table
         assert response.body['pizza']['flavor'] == repo.orders[0].pizza.flavor.value[0]
         assert response.body['pizza']['stuffed_edge'] == repo.orders[0].pizza.stuffed_edge.value[0]
+        assert response.body['state'] == repo.orders[0].state.value
         assert response.body['price'] == repo.orders[0].pizza.flavor.value[1] + repo.orders[0].pizza.stuffed_edge.value[1]

@@ -61,6 +61,7 @@ class Test_GetOrderPresenter:
         expected = {'id': 1, 
                     'pizza': {'flavor': 'BACON', 'stuffed_edge': 'CHEDDAR'}, 
                     'table': 1,
+                    'state': "DONE",
                     'price': 35
         }
 

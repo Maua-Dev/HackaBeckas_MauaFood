@@ -8,4 +8,4 @@ class Test_DeleteOrderViewModel:
 
         deleteOrderViewModel = DeleteOrderViewModel(order = repo.orders[0]).to_dict()
 
-        assert deleteOrderViewModel == {'id': 1, 'table': 1, 'pizza': {'flavor': 'BACON', 'stuffed_edge': 'CHEDDAR'}, "message": "the order has been deleted"}
+        assert deleteOrderViewModel == {'id': 1, 'table': 1, 'pizza': {'flavor': 'BACON', 'stuffed_edge': 'CHEDDAR'}, "state":"DONE", "message": "the order has been deleted"}

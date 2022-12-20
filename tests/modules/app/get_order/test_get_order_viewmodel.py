@@ -8,4 +8,4 @@ class Test_GetOrderViewmodel:
 
         updateOrderViewModel = GetOrderViewmodel(order=repo.orders[0]).to_dict()
 
-        assert updateOrderViewModel == {"id": 1, "table": 1, "pizza": {"flavor": "BACON", "stuffed_edge": "CHEDDAR"}, "price": 35}
+        assert updateOrderViewModel == {"id": 1, "table": 1, "pizza": {"flavor": "BACON", "stuffed_edge": "CHEDDAR"}, "state": "DONE", "price": 35}

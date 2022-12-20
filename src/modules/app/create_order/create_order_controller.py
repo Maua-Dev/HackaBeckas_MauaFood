@@ -1,3 +1,4 @@
+from src.shared.domain.enums.state_enum import STATE
 from src.shared.domain.enums.stuffed_edge_enum import STUFFED_EDGE
 from .create_order_usecase import CreateOrderUsecase
 from .create_order_viewmodel import CreateOrderViewModel
@@ -32,6 +33,9 @@ class CreateOrderController:
             
             if not request.body["id"].isdecimal():
                 raise EntityError('id')
+
+            if request.body["state"] is None:
+                raise EntityError('state')
             
             # if not request.body["price"].isdecimal():
             #     raise EntityError("price")
@@ -44,6 +48,10 @@ class CreateOrderController:
             for item in STUFFED_EDGE:
                 edges.append(item.value[0])
 
+            states = list()
+            for item in STATE:
+                states.append(item.value)
+
             # prices = list()
             # for item in FLAVOR.value[1]:
             #     prices.append(item.value())
@@ -53,11 +61,14 @@ class CreateOrderController:
 
             if request.body["stuffed_edge"] not in edges:
                 raise EntityError("stuffed_edge")
+
+            if request.body["state"] not in states:
+                raise EntityError("state")
             
             # if request.body["price"] not in prices:
             #     raise EntityError("price")
 
-            order = self.createOrderUsecase(id=int(request.body["id"]), table=int(request.body["table"]),flavor=FLAVOR[request.body["flavor"]],stuffed_edge=STUFFED_EDGE[request.body["stuffed_edge"]])
+            order = self.createOrderUsecase(id=int(request.body["id"]), table=int(request.body["table"]),flavor=FLAVOR[request.body["flavor"]],stuffed_edge=STUFFED_EDGE[request.body["stuffed_edge"]], state=STATE[request.body["state"]])
             viewmodel = CreateOrderViewModel(order=order)
             return Created(viewmodel.to_dict())
             
