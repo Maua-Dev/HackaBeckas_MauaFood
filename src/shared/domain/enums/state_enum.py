@@ -1,0 +1,8 @@
+from enum import Enum
+
+
+class STATE(Enum):
+    DONE = "DONE"
+    DECLINED = "DECLINED"
+    WAITING_PAYMENT = "WAITING_PAYMENT"
+    DELIVERING = "DELIVERING"
