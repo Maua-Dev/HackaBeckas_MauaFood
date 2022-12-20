@@ -1,4 +1,4 @@
-# PizzariaBrancas
+# PizzariaBrancas 🍕
 
 O projeto HackaBeckas foi um desafio organizado pela a DevCommunity do Instituto Mauá de Tecnologia, com o objetivo de desenvolver e aprender os conhecimentos de Back-end em python com as rotas de arquitetura limpa.
 
