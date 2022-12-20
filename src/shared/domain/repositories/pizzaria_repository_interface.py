@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from typing import List
 from src.shared.domain.enums.flavor_enum import FLAVOR
 # from src.shared.domain.enums.price_enum import PRICE
 from src.shared.domain.entities.order import Order
@@ -22,4 +23,8 @@ class IPizzariaRepository(ABC):
 
     @abstractmethod
     def get_order(self, id: int) -> Order:
+        pass
+
+    @abstractmethod
+    def get_all_orders(self) -> List[Order]:
         pass

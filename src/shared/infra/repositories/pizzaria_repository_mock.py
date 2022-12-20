@@ -86,3 +86,6 @@ class PizzariaRepositoryMock(IPizzariaRepository):
             if (order.id == id):
                 return order
         return None
+
+    def get_all_orders(self) -> List[Order]:
+        return self.orders
